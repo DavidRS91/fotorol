@@ -1,24 +1,29 @@
-const express = require('express')
-const colors = require('colors')
+const express = require('express');
+const logger = require('morgan');
+const colors = require('colors');
 
 
 // When we 'require' express, we get a function that generates an instance of an express app. This app will be used to build a web server
 const app = express();
 
+
+app.use(logger("dev"));
+
+
 // app.use is similar  to app.get, but it works for all http verbs.
 
-//When a path is not specified for app.get or app.use, it will match for all routes
-app.use((request, response, next) => {
-  console.log(
-    "Request method: ",request.method.red.bold, ", Request path: ", request.path.red.bold, ", Request time: ",new Date().toString().red.bold
-  );
-  // The "next" (3rd) arg in the function, is the arg that tells express to
-  // move to the next middleware section inline when it is called.
-
-  // If you forget to call next, the client will never get a response back,
-  // which means it will keep on waiting until it times out.
-  next();
-});
+//When a path is not specified for app.use, it will match for all routes
+// app.use((request, response, next) => {
+//   console.log(
+//     "Request method: ",request.method.red.bold, ", Request path: ", request.path.red.bold, ", Request time: ",new Date().toString().red.bold
+//   );
+//   // The "next" (3rd) arg in the function, is the arg that tells express to
+//   // move to the next middleware section inline when it is called.
+//
+//   // If you forget to call next, the client will never get a response back,
+//   // which means it will keep on waiting until it times out.
+//   next();
+// });
 
 // app.get('urlPath', function callback (request,response))
 // URL http://www.example.com/home
