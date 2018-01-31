@@ -17,7 +17,7 @@ const app = express();
       //      contain an http header, and possible a body that would hold data such as an HTML page.
 
 app.get('/home', (request,response) => {
-  response.send('Welcome Home Bawb!') //sends text back to the browser
+  response.send('Welcome Home Bawby!') //sends text back to the browser
 });
 
 app.get('/home2', (request,response) => {
