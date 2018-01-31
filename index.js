@@ -5,7 +5,7 @@ const colors = require('colors');
 
 // When we 'require' express, we get a function that generates an instance of an express app. This app will be used to build a web server
 const app = express();
-
+app.set('view engine', 'ejs');
 
 app.use(logger("dev"));
 
@@ -38,7 +38,11 @@ app.use(logger("dev"));
       //      contain an http header, and possible a body that would hold data such as an HTML page.
 
 app.get('/home', (request,response) => {
-  response.send('Welcome Home Bawby!') //sends text back to the browser
+  // response.send('Welcome Home Bawby!') //sends text back to the browser
+
+
+  //The below command will look in the /views directory for a .ejs file titled 'home' and return the content of the .ejs file
+  response.render('home')
 });
 
 app.get('/home2', (request,response) => {
