@@ -2,13 +2,14 @@ const express = require('express');
 const logger = require('morgan');
 const colors = require('colors');
 const bodyParser = require('body-parser');
-
-
+const path = require('path');
+console.log(__dirname);
 // When we 'require' express, we get a function that generates an instance of an express app. This app will be used to build a web server
 const app = express();
 app.set('view engine', 'ejs');
 
 app.use(logger("dev"));
+app.use(express.static(path.join(__dirname,'public')));
 
 app.use(bodyParser.urlencoded({extended:true}));
 // This is 'url encoded data': http://localhost:3002/contact_us?fullName=David+Scott&message=Hello%2C+it%27s+me%21%21%21+Is+this+working%3F%0D%0A%0D%0A%0D%0AHelloooo%3F
@@ -59,7 +60,7 @@ app.post('/contact_us', (request, response) => {
   const body = request.body;
   const fullName = body.fullName;
   const message = body.message;
-  const numbers = [1,2,3,4,5,6]  
+  const numbers = [1,2,3,4,5,6]
   response.render('thank_you', {fullName: fullName, message: message, numbers: numbers})
   // All properties of the object passed as the second arg to response.render will be available inside the rendered template as local variables
   // Data coming in from a form using the post method will be on the propert 'body' of the request
