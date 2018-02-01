@@ -1,0 +1,22 @@
+<%- include('./partials/header') %>
+<h1>Sign In</h1>
+
+
+
+    <br>
+
+<!-- A form's default method is GET -->
+
+    <form action="/sign_in" method="POST">
+      <div class="form-group">
+        <label for="userName">User Name</label><br>
+        <input type="text" class="form-control" name="userName" id="fullName" value="">
+      </div>
+
+
+      <div>
+        <input  class="btn btn-primary" type="submit" value='Submit'>
+      </div>
+
+    </form>
+<%- include('./partials/footer') %>
